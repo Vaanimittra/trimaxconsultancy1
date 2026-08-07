@@ -5,8 +5,380 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Projects · Trimax Consultancy</title>
-    <!-- Common CSS (embedded for single-page demo) -->
-    <link rel="stylesheet" href="style.css">
+    <style>
+        /* ===== RESET & BASE ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #fafaf8;
+            color: #1a2a3a;
+            line-height: 1.6;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        /* ===== HEADER ===== */
+        header {
+            background: #0f2c3d;
+            color: white;
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .nav-wrapper {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #f5e6d3;
+        }
+
+        .logo span {
+            color: #b8863d;
+            font-weight: 300;
+        }
+
+        .menu {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .menu a {
+            color: #f5e6d3;
+            text-decoration: none;
+            padding: 8px 14px;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+            font-size: 0.95rem;
+        }
+
+        .menu a:hover {
+            background: #b8863d;
+            color: #0f2c3d;
+            transform: scale(1.05);
+            box-shadow: 0 4px 15px rgba(184, 134, 61, 0.4);
+        }
+
+        .menu a.active {
+            background: #b8863d;
+            color: #0f2c3d;
+        }
+
+        /* ===== PAGE SECTION ===== */
+        .page-section {
+            padding: 60px 0;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            color: #0f2c3d;
+            margin-bottom: 10px;
+        }
+
+        .section-title span {
+            color: #b8863d;
+        }
+
+        .section-sub {
+            font-size: 1.2rem;
+            color: #5a6a7a;
+            margin-bottom: 40px;
+        }
+
+        /* ===== GRID SYSTEMS ===== */
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+
+        .grid-4 {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+        }
+
+        /* ===== CARDS ===== */
+        .card {
+            background: white;
+            padding: 25px 20px;
+            border-radius: 20px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.06);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 1px solid rgba(184, 134, 61, 0.1);
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+        }
+
+        /* ===== IMAGE PLACEHOLDER ===== */
+        .img-placeholder {
+            background: linear-gradient(135deg, #e8edf2, #d5dce3);
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 150px;
+            font-size: 1.2rem;
+            color: #5a6a7a;
+            overflow: hidden;
+        }
+
+        .img-placeholder img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* ===== PROJECT SPECIFICS ===== */
+        .project-tag {
+            display: inline-block;
+            background: #b8863d;
+            color: white;
+            padding: 4px 14px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .project-content h3 {
+            color: #0f2c3d;
+            font-size: 1.2rem;
+            margin-bottom: 4px;
+        }
+
+        .location {
+            color: #4d6377;
+            font-size: 0.9rem;
+            margin-bottom: 10px;
+        }
+
+        .specs {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 10px;
+        }
+
+        .specs span {
+            background: #f2f6fb;
+            padding: 3px 12px;
+            border-radius: 15px;
+            font-size: 0.85rem;
+            color: #0f2c3d;
+        }
+
+        .price {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: #b8863d;
+            margin-bottom: 10px;
+        }
+
+        .price small {
+            font-size: 0.8rem;
+            font-weight: 400;
+            color: #4d6377;
+        }
+
+        /* ===== BUTTONS ===== */
+        .btn-cta {
+            display: inline-block;
+            padding: 10px 24px;
+            background: #0f2c3d;
+            color: white;
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: 2px solid #0f2c3d;
+            font-size: 0.9rem;
+            cursor: pointer;
+            margin-right: 8px;
+            margin-bottom: 8px;
+        }
+
+        .btn-cta:hover {
+            background: #b8863d;
+            border-color: #b8863d;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(184, 134, 61, 0.4);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: #0f2c3d;
+            border: 2px solid #0f2c3d;
+        }
+
+        .btn-outline:hover {
+            background: #0f2c3d;
+            color: white;
+            border-color: #0f2c3d;
+        }
+
+        /* ===== PROJECT HIGHLIGHTS ===== */
+        .highlight-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+
+        .highlight-item h4 {
+            color: #b8863d;
+            margin-bottom: 6px;
+        }
+
+        .highlight-item p {
+            color: #4d6377;
+        }
+
+        /* ===== FOOTER ===== */
+        footer {
+            background: #0f2c3d;
+            color: #d4d4d4;
+            text-align: center;
+            padding: 30px 0;
+            margin-top: 40px;
+        }
+
+        /* ===== RESPONSIVE DESIGN ===== */
+        @media (max-width: 992px) {
+            .grid-4 {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 25px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-wrapper {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .menu {
+                justify-content: center;
+                gap: 8px;
+            }
+
+            .menu a {
+                font-size: 0.85rem;
+                padding: 6px 12px;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .section-sub {
+                font-size: 1rem;
+            }
+
+            .page-section {
+                padding: 40px 0;
+            }
+
+            .grid-3 {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .grid-4 {
+                grid-template-columns: 1fr;
+                gap: 25px;
+            }
+
+            .highlight-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .logo {
+                font-size: 1.3rem;
+            }
+
+            .btn-cta {
+                display: inline-block;
+                padding: 10px 20px;
+                font-size: 0.85rem;
+                width: 100%;
+                text-align: center;
+                margin-right: 0;
+            }
+
+            .btn-outline {
+                margin-left: 0;
+            }
+
+            .card {
+                padding: 20px 16px;
+            }
+
+            .price {
+                font-size: 1.2rem;
+            }
+
+            .specs span {
+                font-size: 0.8rem;
+                padding: 2px 10px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .menu a {
+                font-size: 0.75rem;
+                padding: 4px 10px;
+            }
+
+            .section-title {
+                font-size: 1.6rem;
+            }
+
+            .logo {
+                font-size: 1.1rem;
+            }
+
+            .project-content h3 {
+                font-size: 1.1rem;
+            }
+
+            .price {
+                font-size: 1.1rem;
+            }
+
+            .img-placeholder {
+                min-height: 120px;
+                font-size: 1rem;
+            }
+
+            .btn-cta {
+                padding: 8px 16px;
+                font-size: 0.8rem;
+            }
+        }
+    </style>
 </head>
 
 <body>
@@ -16,10 +388,10 @@
         <div class="container nav-wrapper">
             <div class="logo">🏡 Trimax<span>Consultancy</span></div>
             <nav class="menu">
-                <a href="home.html">Home</a>
+                <a href="index.html">Home</a>
                 <a href="about.html">About</a>
                 <a href="project.html" class="active">Project</a>
-                <a href="ourteam.html">Our team</a>
+                <a href="ourteam.html">Our Team</a>
                 <a href="realtyblogs.html">Realty Blogs</a>
                 <a href="contact.html">Contact</a>
             </nav>
@@ -38,7 +410,10 @@
                 <div class="grid-4">
                     <!-- Project 1 -->
                     <div class="card">
-                        <div class="img-placeholder" style="min-height: 150px; margin-bottom: 16px;"><i>🏡 Tirupati</i>
+                        <div class="img-placeholder" style="min-height: 150px; margin-bottom: 16px;">
+                            <img src="https://images.unsplash.com/photo-1580587771525-78b9dba3b914?w=600&h=300&fit=crop&crop=center" 
+                                 alt="Tirupati Farmhouse" 
+                                 style="width:100%; height:100%; object-fit:cover; border-radius:15px;" />
                         </div>
                         <div class="project-content">
                             <span class="project-tag">⭐ Featured</span>
@@ -51,10 +426,10 @@
                                 <span>🌿 Garden</span>
                             </div>
                             <div class="price">₹ 65 Lacs* <small>+ taxes</small></div>
-                            <p style="color: #4d6377; margin-bottom: 16px;">A perfect weekend retreat with modern
+                            <p style="color: #4d6377; margin-bottom: 16px; font-size: 0.95rem;">A perfect weekend retreat with modern
                                 amenities, private pool, and lush landscaping.</p>
                             <div>
-                                <a href="#properties" class="btn-cta">View Details</a>
+                                <a href="#" class="btn-cta">View Details</a>
                                 <a href="https://forms.gle/FGjjLSDc4zigraWw9" class="btn-cta btn-outline"
                                     target="_blank">Schedule Visit</a>
                             </div>
@@ -62,8 +437,11 @@
                     </div>
                     <!-- Project 2 -->
                     <div class="card">
-                        <div class="img-placeholder" style="min-height: 150px; margin-bottom: 16px;"><i>
-                                🏰 Amber Villa</i></div>
+                        <div class="img-placeholder" style="min-height: 150px; margin-bottom: 16px;">
+                            <img src="https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=600&h=300&fit=crop&crop=center" 
+                                 alt="Amber Heritage Villa" 
+                                 style="width:100%; height:100%; object-fit:cover; border-radius:15px;" />
+                        </div>
                         <div class="project-content">
                             <span class="project-tag">🏆 Luxury</span>
                             <h3>Amber Heritage Villa</h3>
@@ -75,10 +453,10 @@
                                 <span>💎 Premium</span>
                             </div>
                             <div class="price">₹ 1.2 Cr* <small>+ taxes</small></div>
-                            <p style="color: #4d6377; margin-bottom: 16px;">A royal estate with banquet facilities,
+                            <p style="color: #4d6377; margin-bottom: 16px; font-size: 0.95rem;">A royal estate with banquet facilities,
                                 ideal for grand gatherings and luxury living.</p>
                             <div>
-                                <a href="#properties" class="btn-cta">View Details</a>
+                                <a href="#" class="btn-cta">View Details</a>
                                 <a href="https://forms.gle/FGjjLSDc4zigraWw9" class="btn-cta btn-outline"
                                     target="_blank">Schedule Visit</a>
                             </div>
@@ -86,7 +464,10 @@
                     </div>
                     <!-- Project 3 -->
                     <div class="card">
-                        <div class="img-placeholder" style="min-height: 150px; margin-bottom: 16px;"><i>🌿 Pink City</i>
+                        <div class="img-placeholder" style="min-height: 150px; margin-bottom: 16px;">
+                            <img src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=600&h=300&fit=crop&crop=center" 
+                                 alt="Pink City Retreat" 
+                                 style="width:100%; height:100%; object-fit:cover; border-radius:15px;" />
                         </div>
                         <div class="project-content">
                             <span class="project-tag">🌅 Modern</span>
@@ -99,10 +480,10 @@
                                 <span>🌳 Landscaped</span>
                             </div>
                             <div class="price">₹ 48 Lacs* <small>+ taxes</small></div>
-                            <p style="color: #4d6377; margin-bottom: 16px;">Contemporary design with landscaped gardens,
+                            <p style="color: #4d6377; margin-bottom: 16px; font-size: 0.95rem;">Contemporary design with landscaped gardens,
                                 perfect for a modern weekend home.</p>
                             <div>
-                                <a href="#properties" class="btn-cta">View Details</a>
+                                <a href="#" class="btn-cta">View Details</a>
                                 <a href="https://forms.gle/FGjjLSDc4zigraWw9" class="btn-cta btn-outline"
                                     target="_blank">Schedule Visit</a>
                             </div>
@@ -110,88 +491,83 @@
                     </div>
                     <!-- Project 4 -->
                     <div class="card">
-                        <div class="img-placeholder" style="min-height: 150px; margin-bottom: 16px;"><i>💧 Lakeview
-                                Estate</i>
+                        <div class="img-placeholder" style="min-height: 150px; margin-bottom: 16px;">
+                            <img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=600&h=300&fit=crop&crop=center" 
+                                 alt="Lakeview Estate" 
+                                 style="width:100%; height:100%; object-fit:cover; border-radius:15px;" />
                         </div>
-                        <h3>💧 Lakeview Estate</h3>
-                        <div class="location">📍 Man Sagar Lake, Jaipur</div>
-                        <div class="specs">
-                            <span>🛏️ 4 BHK</span>
-                            <span>📐 3.2 Acres</span>
-                            <span>💧 Lake Access</span>
-                            <span>🛶 Private Dock</span>
+                        <div class="project-content">
+                            <span class="project-tag">💎 Exclusive</span>
+                            <h3>Lakeview Estate</h3>
+                            <div class="location">📍 Man Sagar Lake, Jaipur</div>
+                            <div class="specs">
+                                <span>🛏️ 4 BHK</span>
+                                <span>📐 3.2 Acres</span>
+                                <span>💧 Lake Access</span>
+                                <span>🛶 Private Dock</span>
+                            </div>
+                            <div class="price">₹ 1.8 Cr* <small>+ taxes</small></div>
+                            <p style="color: #4d6377; margin-bottom: 16px; font-size: 0.95rem;">Exclusive waterfront property with private
+                                lake access and stunning sunset views.</p>
+                            <div>
+                                <a href="#" class="btn-cta">View Details</a>
+                                <a href="https://forms.gle/FGjjLSDc4zigraWw9" class="btn-cta btn-outline"
+                                    target="_blank">Schedule Visit</a>
+                            </div>
                         </div>
-                        <div class="price">₹ 1.8 Cr* <small>+ taxes</small></div>
-                        <p style="color: #4d6377; margin-bottom: 16px;">Exclusive waterfront property with private
-                            lake access and stunning sunset views.</p>
-                        <div>
-                            <a href="#properties" class="btn-cta">View Details</a>
-                            <a href="https://forms.gle/FGjjLSDc4zigraWw9" class="btn-cta btn-outline"
-                                target="_blank">Schedule Visit</a>
+                    </div>
+                </div>
+
+                <!-- Upcoming Projects -->
+                <h2 class="section-title" style="font-size: 2rem; margin-top: 60px;">Upcoming <span>Projects</span></h2>
+                <p class="section-sub">Exciting new developments coming soon to Jaipur's most sought-after locations.</p>
+
+                <div class="grid-3">
+                    <div class="card" style="text-align: center; padding: 30px 20px;">
+                        <div style="font-size: 2.5rem; margin-bottom: 12px;">🏗️</div>
+                        <h3>Sunrise Hills</h3>
+                        <p style="color: #4d6377;">Premium farmhouses with panoramic views. Launching 2026.</p>
+                        <div style="margin-top: 12px; color: #b8863d; font-weight: 600;">Coming Soon</div>
+                    </div>
+                    <div class="card" style="text-align: center; padding: 30px 20px;">
+                        <div style="font-size: 2.5rem; margin-bottom: 12px;">🌄</div>
+                        <h3>Royal Orchards</h3>
+                        <p style="color: #4d6377;">Luxury estates with private orchards and organic farming.</p>
+                        <div style="margin-top: 12px; color: #b8863d; font-weight: 600;">Coming Soon</div>
+                    </div>
+                    <div class="card" style="text-align: center; padding: 30px 20px;">
+                        <div style="font-size: 2.5rem; margin-bottom: 12px;">🏰</div>
+                        <h3>Heritage Greens</h3>
+                        <p style="color: #4d6377;">Regal farmhouses inspired by Rajasthani architecture.</p>
+                        <div style="margin-top: 12px; color: #b8863d; font-weight: 600;">Coming Soon</div>
+                    </div>
+                </div>
+
+                <!-- Project Highlights -->
+                <div style="margin-top: 60px; background: #f2f6fb; padding: 40px 30px; border-radius: 40px;">
+                    <h2 style="color: #0f2c3d; font-size: 1.8rem; margin-bottom: 20px;">✨ Project Highlights</h2>
+                    <div class="highlight-grid">
+                        <div class="highlight-item">
+                            <h4>📍 Prime Locations</h4>
+                            <p>All projects are situated in the most desirable areas of Jaipur with excellent connectivity.</p>
+                        </div>
+                        <div class="highlight-item">
+                            <h4>🏗️ Premium Quality</h4>
+                            <p>Uncompromised construction standards with high-quality materials and modern design.</p>
+                        </div>
+                        <div class="highlight-item">
+                            <h4>🌿 Sustainable Living</h4>
+                            <p>Eco-friendly features including rainwater harvesting, solar energy, and green spaces.</p>
                         </div>
                     </div>
                 </div>
-            </div>
 
-            <!-- Upcoming Projects -->
-            <h2 class="section-title" style="font-size: 2rem; margin-top: 60px;">Upcoming <span>Projects</span></h2>
-            <p class="section-sub">Exciting new developments coming soon to Jaipur's most sought-after locations.
-            </p>
-
-            <div class="grid-3">
-                <div class="card" style="text-align: center; padding: 30px 20px;">
-                    <div style="font-size: 2.5rem; margin-bottom: 12px;">🏗️</div>
-                    <h3>Sunrise Hills</h3>
-                    <p style="color: #4d6377;">Premium farmhouses with panoramic views. Launching 2026.</p>
-                    <div style="margin-top: 12px; color: #b8863d; font-weight: 600;">Coming Soon</div>
+                <!-- CTA Section -->
+                <div style="margin-top: 50px; background: linear-gradient(135deg, #0f2c3d, #1a3f55); padding: 40px 30px; border-radius: 40px; text-align: center; color: white;">
+                    <h2 style="font-size: 2rem; margin-bottom: 16px;">Interested in a <span style="color: #b8863d;">Project</span>?</h2>
+                    <p style="font-size: 1.1rem; margin-bottom: 24px; opacity: 0.9;">Get detailed information, price lists, and schedule a site visit today.</p>
+                    <a href="contact.html" class="btn-cta" style="background: #b8863d; color: white; border-color: #b8863d; padding: 16px 44px; font-size: 1.1rem;">Get in Touch</a>
                 </div>
-                <div class="card" style="text-align: center; padding: 30px 20px;">
-                    <div style="font-size: 2.5rem; margin-bottom: 12px;">🌄</div>
-                    <h3>Royal Orchards</h3>
-                    <p style="color: #4d6377;">Luxury estates with private orchards and organic farming.</p>
-                    <div style="margin-top: 12px; color: #b8863d; font-weight: 600;">Coming Soon</div>
-                </div>
-                <div class="card" style="text-align: center; padding: 30px 20px;">
-                    <div style="font-size: 2.5rem; margin-bottom: 12px;">🏰</div>
-                    <h3>Heritage Greens</h3>
-                    <p style="color: #4d6377;">Regal farmhouses inspired by Rajasthani architecture.</p>
-                    <div style="margin-top: 12px; color: #b8863d; font-weight: 600;">Coming Soon</div>
-                </div>
-            </div>
-
-            <!-- Project Highlights -->
-            <div style="margin-top: 60px; background: #f2f6fb; padding: 40px 30px; border-radius: 40px;">
-                <h2 style="color: #0f2c3d; font-size: 1.8rem; margin-bottom: 20px;">✨ Project Highlights</h2>
-                <div class="grid-3" style="margin: 0;">
-                    <div>
-                        <h4 style="color: #b8863d;">📍 Prime Locations</h4>
-                        <p style="color: #4d6377;">All projects are situated in the most desirable areas of Jaipur
-                            with excellent connectivity.</p>
-                    </div>
-                    <div>
-                        <h4 style="color: #b8863d;">🏗️ Premium Quality</h4>
-                        <p style="color: #4d6377;">Uncompromised construction standards with high-quality materials
-                            and modern design.</p>
-                    </div>
-                    <div>
-                        <h4 style="color: #b8863d;">🌿 Sustainable Living</h4>
-                        <p style="color: #4d6377;">Eco-friendly features including rainwater harvesting, solar
-                            energy, and green spaces.</p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- CTA Section -->
-            <div
-                style="margin-top: 50px; background: linear-gradient(135deg, #0f2c3d, #1a3f55); padding: 40px 30px; border-radius: 40px; text-align: center; color: white;">
-                <h2 style="font-size: 2rem; margin-bottom: 16px;">Interested in a <span
-                        style="color: #b8863d;">Project</span>?</h2>
-                <p style="font-size: 1.1rem; margin-bottom: 24px; opacity: 0.9;">Get detailed information, price
-                    lists, and schedule a site visit today.</p>
-                <a href="#contact" class="btn-cta"
-                    style="display: inline-block; background: #b8863d; color: white; padding: 16px 44px; border-radius: 60px; font-weight: 600; text-decoration: none; transition: 0.25s ease; font-size: 1.1rem;">Get
-                    in Touch</a>
-            </div>
             </div>
         </section>
     </main>
@@ -200,16 +576,15 @@
     <footer>
         <div class="container">
             <p>© 2026 Trimax Consultancy · Luxury Real Estate Jaipur · 5 pages · common CSS · hover & smooth scroll</p>
-            <p style="margin-top: 6px; font-size: 0.9rem; opacity: 0.7;">🏡 crafted for discerning buyers · all images
-                are illustrative</p>
+            <p style="margin-top: 6px; font-size: 0.9rem; opacity: 0.7;">🏡 crafted for discerning buyers · all images are illustrative</p>
         </div>
     </footer>
 
-    <!-- ========== COMMON JAVASCRIPT ========== -->
+    <!-- ========== JAVASCRIPT ========== -->
     <script>
-        document.addEventListener('DOMContentLoaded', function () {
+        document.addEventListener('DOMContentLoaded', function() {
             // Active menu highlight
-            const currentPage = window.location.pathname.split('/').pop() || 'projects.html';
+            const currentPage = window.location.pathname.split('/').pop() || 'project.html';
             const menuLinks = document.querySelectorAll('.menu a');
             menuLinks.forEach(link => {
                 const linkHref = link.getAttribute('href');
@@ -222,7 +597,7 @@
 
             // Smooth scroll for internal links
             document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-                anchor.addEventListener('click', function (e) {
+                anchor.addEventListener('click', function(e) {
                     const targetId = this.getAttribute('href');
                     if (targetId === '#') return;
                     const targetElement = document.querySelector(targetId);
