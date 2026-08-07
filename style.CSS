@@ -81,6 +81,19 @@ header {
     color: #0f2c3d;
 }
 
+/* ===== HAMBURGER MENU ===== */
+.hamburger {
+    display: none;
+    font-size: 1.8rem;
+    cursor: pointer;
+    color: #f5e6d3;
+    padding: 5px 10px;
+}
+
+.hamburger.active {
+    color: #b8863d;
+}
+
 /* ===== PAGE SECTIONS ===== */
 .page-section {
     padding: 60px 0;
@@ -151,6 +164,11 @@ header {
     color: #4d6377;
 }
 
+.card .icon {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+}
+
 /* ===== IMAGE PLACEHOLDER ===== */
 .img-placeholder {
     background: linear-gradient(135deg, #e8edf2, #d5dce3);
@@ -175,7 +193,8 @@ header {
 }
 
 /* ===== BUTTONS ===== */
-.btn-cta {
+.btn-cta,
+.btn-primary {
     display: inline-block;
     padding: 12px 28px;
     background: #0f2c3d;
@@ -189,7 +208,8 @@ header {
     font-size: 0.95rem;
 }
 
-.btn-cta:hover {
+.btn-cta:hover,
+.btn-primary:hover {
     background: #b8863d;
     border-color: #b8863d;
     transform: translateY(-3px);
@@ -494,11 +514,69 @@ footer {
     transform: scale(1.2);
 }
 
+/* ===== WHATSAPP FLOATING BUTTON ===== */
+.whatsapp-float {
+    position: fixed;
+    bottom: 30px;
+    left: 30px;
+    background: #25D366;
+    color: white;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
+    transition: all 0.3s ease;
+    z-index: 999;
+    text-decoration: none;
+}
+
+.whatsapp-float:hover {
+    transform: scale(1.1);
+    box-shadow: 0 6px 30px rgba(37, 211, 102, 0.6);
+}
+
+/* ===== SCROLL TO TOP BUTTON ===== */
+#scrollToTop {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    background: #b8863d;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    font-size: 24px;
+    cursor: pointer;
+    display: none;
+    z-index: 999;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s ease;
+}
+
+#scrollToTop:hover {
+    transform: scale(1.1);
+    background: #0f2c3d;
+}
+
 /* ===== RESPONSIVE DESIGN ===== */
 @media (max-width: 992px) {
     .grid-4 {
         grid-template-columns: repeat(2, 1fr);
         gap: 25px;
+    }
+
+    .grid-2 {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+
+    .faq-grid {
+        grid-template-columns: 1fr 1fr;
     }
 }
 
@@ -512,11 +590,36 @@ footer {
     .menu {
         justify-content: center;
         gap: 8px;
+        display: flex;
     }
 
     .menu a {
         font-size: 0.85rem;
         padding: 6px 12px;
+    }
+
+    /* Hamburger menu for mobile */
+    .hamburger {
+        display: block;
+    }
+
+    .menu {
+        display: none;
+        width: 100%;
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+        padding: 15px 0;
+    }
+
+    .menu.active {
+        display: flex;
+    }
+
+    .menu a {
+        width: 100%;
+        text-align: center;
+        padding: 10px;
     }
 
     /* Typography */
@@ -533,11 +636,6 @@ footer {
     }
 
     /* Grids */
-    .grid-2 {
-        grid-template-columns: 1fr;
-        gap: 25px;
-    }
-
     .grid-3 {
         grid-template-columns: 1fr;
         gap: 20px;
@@ -554,7 +652,8 @@ footer {
     }
 
     /* Buttons */
-    .btn-cta {
+    .btn-cta,
+    .btn-primary {
         display: block;
         width: 100%;
         text-align: center;
@@ -619,6 +718,29 @@ footer {
     .social-icons {
         justify-content: center;
     }
+
+    /* FAQ */
+    .faq-grid {
+        grid-template-columns: 1fr;
+    }
+
+    /* WhatsApp Float */
+    .whatsapp-float {
+        width: 50px;
+        height: 50px;
+        font-size: 1.6rem;
+        bottom: 20px;
+        left: 20px;
+    }
+
+    /* Scroll to Top */
+    #scrollToTop {
+        width: 45px;
+        height: 45px;
+        font-size: 20px;
+        bottom: 20px;
+        right: 20px;
+    }
 }
 
 @media (max-width: 480px) {
@@ -653,7 +775,8 @@ footer {
     }
 
     /* Buttons */
-    .btn-cta {
+    .btn-cta,
+    .btn-primary {
         padding: 10px 20px;
         font-size: 0.85rem;
     }
@@ -699,5 +822,23 @@ footer {
 
     .social-icons a {
         font-size: 1rem;
+    }
+
+    /* WhatsApp Float */
+    .whatsapp-float {
+        width: 45px;
+        height: 45px;
+        font-size: 1.4rem;
+        bottom: 15px;
+        left: 15px;
+    }
+
+    /* Scroll to Top */
+    #scrollToTop {
+        width: 40px;
+        height: 40px;
+        font-size: 18px;
+        bottom: 15px;
+        right: 15px;
     }
 }
