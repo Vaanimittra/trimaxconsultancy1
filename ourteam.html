@@ -5,8 +5,371 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Our Team · Trimax Consultancy</title>
-    <!-- Common CSS (embedded for single-page demo) -->
-    <link rel="stylesheet" href="style.css">
+    <style>
+        /* ===== RESET & BASE ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #fafaf8;
+            color: #1a2a3a;
+            line-height: 1.6;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        /* ===== HEADER ===== */
+        header {
+            background: #0f2c3d;
+            color: white;
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .nav-wrapper {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #f5e6d3;
+        }
+
+        .logo span {
+            color: #b8863d;
+            font-weight: 300;
+        }
+
+        .menu {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .menu a {
+            color: #f5e6d3;
+            text-decoration: none;
+            padding: 8px 14px;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+            font-size: 0.95rem;
+        }
+
+        .menu a:hover {
+            background: #b8863d;
+            color: #0f2c3d;
+            transform: scale(1.05);
+            box-shadow: 0 4px 15px rgba(184, 134, 61, 0.4);
+        }
+
+        .menu a.active {
+            background: #b8863d;
+            color: #0f2c3d;
+        }
+
+        /* ===== PAGE SECTION ===== */
+        .page-section {
+            padding: 60px 0;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            color: #0f2c3d;
+            margin-bottom: 10px;
+        }
+
+        .section-title span {
+            color: #b8863d;
+        }
+
+        .section-sub {
+            font-size: 1.2rem;
+            color: #5a6a7a;
+            margin-bottom: 40px;
+        }
+
+        /* ===== GRID SYSTEMS ===== */
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+
+        .culture-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+
+        /* ===== CARDS ===== */
+        .card {
+            background: white;
+            padding: 25px 20px;
+            border-radius: 20px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.06);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .stat-number {
+            font-size: 2.8rem;
+            font-weight: 800;
+            color: #b8863d;
+            line-height: 1;
+        }
+
+        /* ===== TEAM CARDS ===== */
+        .team-card {
+            background: white;
+            padding: 30px 25px;
+            border-radius: 20px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.06);
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 1px solid rgba(184, 134, 61, 0.1);
+        }
+
+        .team-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+        }
+
+        .avatar {
+            font-size: 3.5rem;
+            margin-bottom: 12px;
+            display: block;
+        }
+
+        .team-card h3 {
+            color: #0f2c3d;
+            font-size: 1.2rem;
+            margin-bottom: 4px;
+        }
+
+        .role {
+            color: #b8863d;
+            font-weight: 600;
+            font-size: 0.95rem;
+            margin-bottom: 12px;
+        }
+
+        .bio {
+            color: #4d6377;
+            font-size: 0.95rem;
+            margin-bottom: 16px;
+            line-height: 1.5;
+        }
+
+        /* ===== SOCIAL LINKS ===== */
+        .social-links {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .social-links a {
+            background: #0f2c3d;
+            color: white;
+            padding: 6px 16px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-size: 0.85rem;
+            transition: all 0.3s ease;
+        }
+
+        .social-links a:hover {
+            background: #b8863d;
+            transform: scale(1.05);
+        }
+
+        /* ===== CULTURE ITEMS ===== */
+        .culture-item {
+            background: white;
+            padding: 20px;
+            border-radius: 20px;
+            transition: transform 0.3s ease;
+        }
+
+        .culture-item:hover {
+            transform: translateY(-3px);
+        }
+
+        .culture-item h4 {
+            color: #b8863d;
+            margin-bottom: 8px;
+        }
+
+        .culture-item p {
+            color: #4d6377;
+        }
+
+        /* ===== BUTTONS ===== */
+        .btn-cta {
+            display: inline-block;
+            padding: 14px 40px;
+            background: #0f2c3d;
+            color: white;
+            text-decoration: none;
+            border-radius: 60px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: 2px solid #0f2c3d;
+        }
+
+        .btn-cta:hover {
+            background: #b8863d;
+            border-color: #b8863d;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(184, 134, 61, 0.4);
+        }
+
+        /* ===== FOOTER ===== */
+        footer {
+            background: #0f2c3d;
+            color: #d4d4d4;
+            text-align: center;
+            padding: 30px 0;
+            margin-top: 40px;
+        }
+
+        /* ===== RESPONSIVE DESIGN ===== */
+        @media (max-width: 992px) {
+            .team-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .culture-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-wrapper {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .menu {
+                justify-content: center;
+                gap: 8px;
+            }
+
+            .menu a {
+                font-size: 0.85rem;
+                padding: 6px 12px;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .section-sub {
+                font-size: 1rem;
+            }
+
+            .page-section {
+                padding: 40px 0;
+            }
+
+            .grid-3 {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .team-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .culture-grid {
+                grid-template-columns: 1fr;
+                gap: 16px;
+            }
+
+            .stat-number {
+                font-size: 2.2rem;
+            }
+
+            .avatar {
+                font-size: 2.8rem;
+            }
+
+            .btn-cta {
+                padding: 12px 30px;
+                font-size: 0.95rem;
+                display: block;
+                width: 100%;
+                text-align: center;
+            }
+
+            .logo {
+                font-size: 1.3rem;
+            }
+
+            .team-card {
+                padding: 20px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .menu a {
+                font-size: 0.75rem;
+                padding: 4px 10px;
+            }
+
+            .section-title {
+                font-size: 1.6rem;
+            }
+
+            .logo {
+                font-size: 1.1rem;
+            }
+
+            .stat-number {
+                font-size: 1.8rem;
+            }
+
+            .avatar {
+                font-size: 2.4rem;
+            }
+
+            .team-card h3 {
+                font-size: 1.1rem;
+            }
+
+            .social-links a {
+                font-size: 0.8rem;
+                padding: 4px 12px;
+            }
+        }
+    </style>
 </head>
 
 <body>
@@ -19,7 +382,7 @@
                 <a href="index.html">Home</a>
                 <a href="about.html">About</a>
                 <a href="project.html">Project</a>
-                <a href="ourteam.html" class="active">Our team</a>
+                <a href="ourteam.html" class="active">Our Team</a>
                 <a href="realtyblogs.html">Realty Blogs</a>
                 <a href="contact.html">Contact</a>
             </nav>
@@ -32,8 +395,7 @@
             <div class="container">
                 <h1 class="section-title">Our <span>Team</span></h1>
                 <p class="section-sub">Meet the passionate professionals behind Trimax Consultancy — dedicated to
-                    helping you find
-                    your dream home.</p>
+                    helping you find your dream home.</p>
 
                 <!-- Team Statistics -->
                 <div class="grid-3" style="margin-bottom: 50px;">
@@ -53,6 +415,7 @@
                         <p style="color: #4d6377; font-size: 0.95rem;">Trusted by discerning clients</p>
                     </div>
                 </div>
+
                 <!-- Sales & Advisory Team -->
                 <h2 class="section-title" style="font-size: 2rem; margin-top: 50px;">Sales & <span>Advisory</span></h2>
                 <div class="team-grid">
@@ -134,35 +497,28 @@
                 <!-- Our Culture Section -->
                 <div style="margin-top: 60px; background: #f2f6fb; padding: 40px 30px; border-radius: 40px;">
                     <h2 style="color: #0f2c3d; font-size: 1.8rem; margin-bottom: 20px;">🌟 Our Culture</h2>
-                    <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px;">
-                        <div style="background: white; padding: 20px; border-radius: 20px;">
-                            <h4 style="color: #b8863d;">🤝 Integrity First</h4>
-                            <p style="color: #4d6377;">Honest communication and transparent dealings are at the heart of
-                                everything we do.</p>
+                    <div class="culture-grid">
+                        <div class="culture-item">
+                            <h4>🤝 Integrity First</h4>
+                            <p>Honest communication and transparent dealings are at the heart of everything we do.</p>
                         </div>
-                        <div style="background: white; padding: 20px; border-radius: 20px;">
-                            <h4 style="color: #b8863d;">💎 Excellence</h4>
-                            <p style="color: #4d6377;">We strive for the highest standards in every property we curate
-                                and every client we serve.</p>
+                        <div class="culture-item">
+                            <h4>💎 Excellence</h4>
+                            <p>We strive for the highest standards in every property we curate and every client we serve.</p>
                         </div>
-                        <div style="background: white; padding: 20px; border-radius: 20px;">
-                            <h4 style="color: #b8863d;">🌱 Growth Mindset</h4>
-                            <p style="color: #4d6377;">Continuously learning and evolving to better serve the evolving
-                                luxury real estate market.</p>
+                        <div class="culture-item">
+                            <h4>🌱 Growth Mindset</h4>
+                            <p>Continuously learning and evolving to better serve the evolving luxury real estate market.</p>
                         </div>
                     </div>
                 </div>
 
                 <!-- Join Our Team CTA -->
-                <div
-                    style="margin-top: 50px; background: linear-gradient(135deg, #0f2c3d, #1a3f55); padding: 40px 30px; border-radius: 40px; text-align: center; color: white;">
-                    <h2 style="font-size: 2rem; margin-bottom: 16px;">Join Our <span style="color: #b8863d;">Team</span>
-                    </h2>
+                <div style="margin-top: 50px; background: linear-gradient(135deg, #0f2c3d, #1a3f55); padding: 40px 30px; border-radius: 40px; text-align: center; color: white;">
+                    <h2 style="font-size: 2rem; margin-bottom: 16px;">Join Our <span style="color: #b8863d;">Team</span></h2>
                     <p style="font-size: 1.1rem; margin-bottom: 24px; opacity: 0.9;">We're always looking for passionate
                         professionals to join the Trimax Consultancy family.</p>
-                    <a href="#contact" class="btn-cta"
-                        style="display: inline-block; background: #b8863d; color: white; padding: 14px 40px; border-radius: 60px; font-weight: 600; text-decoration: none; transition: 0.25s ease;">View
-                        Open Positions</a>
+                    <a href="#contact" class="btn-cta" style="background: #b8863d; color: white; border-color: #b8863d;">View Open Positions</a>
                 </div>
             </div>
         </section>
@@ -172,16 +528,15 @@
     <footer>
         <div class="container">
             <p>© 2026 Trimax Consultancy · Luxury Real Estate Jaipur · 5 pages · common CSS · hover & smooth scroll</p>
-            <p style="margin-top: 6px; font-size: 0.9rem; opacity: 0.7;">🏡 crafted for discerning buyers · all images
-                are illustrative</p>
+            <p style="margin-top: 6px; font-size: 0.9rem; opacity: 0.7;">🏡 crafted for discerning buyers · all images are illustrative</p>
         </div>
     </footer>
 
-    <!-- ========== COMMON JAVASCRIPT ========== -->
+    <!-- ========== JAVASCRIPT ========== -->
     <script>
-        document.addEventListener('DOMContentLoaded', function () {
+        document.addEventListener('DOMContentLoaded', function() {
             // Active menu highlight
-            const currentPage = window.location.pathname.split('/').pop() || 'team.html';
+            const currentPage = window.location.pathname.split('/').pop() || 'ourteam.html';
             const menuLinks = document.querySelectorAll('.menu a');
             menuLinks.forEach(link => {
                 const linkHref = link.getAttribute('href');
@@ -194,7 +549,7 @@
 
             // Smooth scroll for internal links
             document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-                anchor.addEventListener('click', function (e) {
+                anchor.addEventListener('click', function(e) {
                     const targetId = this.getAttribute('href');
                     if (targetId === '#') return;
                     const targetElement = document.querySelector(targetId);
