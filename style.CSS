@@ -192,6 +192,77 @@ header {
     object-fit: cover;
 }
 
+/* ===== TEAM MEMBER IMAGES - ROUND SHAPE ===== */
+/* This ensures ALL team member images are perfectly round */
+.headshot,
+.team-img,
+.team-member-img,
+.avatar-img {
+    width: 140px;
+    height: 140px;
+    border-radius: 50% !important;
+    object-fit: cover;
+    border: 4px solid #b8863d;
+    display: block;
+    margin: 0 auto 12px auto;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+.headshot:hover,
+.team-img:hover,
+.team-member-img:hover,
+.avatar-img:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 25px rgba(184, 134, 61, 0.3);
+    border-color: #0f2c3d;
+}
+
+/* For team cards - ensure images are perfectly round */
+.team-card .img-placeholder {
+    background: transparent;
+    min-height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 0;
+}
+
+.team-card .img-placeholder img {
+    width: 140px;
+    height: 140px;
+    border-radius: 50% !important;
+    object-fit: cover;
+    border: 4px solid #b8863d;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+.team-card .img-placeholder img:hover {
+    transform: scale(1.05);
+    border-color: #0f2c3d;
+    box-shadow: 0 6px 25px rgba(184, 134, 61, 0.3);
+}
+
+/* For about page leadership team */
+.leadership-img {
+    width: 140px;
+    height: 140px;
+    border-radius: 50% !important;
+    object-fit: cover;
+    border: 4px solid #b8863d;
+    display: block;
+    margin: 0 auto 12px auto;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+.leadership-img:hover {
+    transform: scale(1.05);
+    border-color: #0f2c3d;
+    box-shadow: 0 6px 25px rgba(184, 134, 61, 0.3);
+}
+
 /* ===== BUTTONS ===== */
 .btn-cta,
 .btn-primary {
@@ -578,6 +649,21 @@ footer {
     .faq-grid {
         grid-template-columns: 1fr 1fr;
     }
+
+    /* Team images - slightly smaller on tablet */
+    .headshot,
+    .team-img,
+    .team-member-img,
+    .avatar-img,
+    .leadership-img {
+        width: 120px;
+        height: 120px;
+    }
+
+    .team-card .img-placeholder img {
+        width: 120px;
+        height: 120px;
+    }
 }
 
 @media (max-width: 768px) {
@@ -741,6 +827,23 @@ footer {
         bottom: 20px;
         right: 20px;
     }
+
+    /* Team images - smaller on mobile */
+    .headshot,
+    .team-img,
+    .team-member-img,
+    .avatar-img,
+    .leadership-img {
+        width: 100px;
+        height: 100px;
+        border-width: 3px;
+    }
+
+    .team-card .img-placeholder img {
+        width: 100px;
+        height: 100px;
+        border-width: 3px;
+    }
 }
 
 @media (max-width: 480px) {
@@ -840,5 +943,22 @@ footer {
         font-size: 18px;
         bottom: 15px;
         right: 15px;
+    }
+
+    /* Team images - smallest on mobile */
+    .headshot,
+    .team-img,
+    .team-member-img,
+    .avatar-img,
+    .leadership-img {
+        width: 80px;
+        height: 80px;
+        border-width: 3px;
+    }
+
+    .team-card .img-placeholder img {
+        width: 80px;
+        height: 80px;
+        border-width: 3px;
     }
 }
