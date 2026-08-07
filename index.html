@@ -5,6 +5,640 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Trimax Consultancy · Luxury Real Estate Jaipur</title>
+    <style>
+        /* ===== RESET & BASE ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #fafaf8;
+            color: #1a2a3a;
+            line-height: 1.6;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        /* ===== HEADER ===== */
+        header {
+            background: #0f2c3d;
+            color: white;
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .nav-wrapper {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #f5e6d3;
+        }
+
+        .logo span {
+            color: #b8863d;
+            font-weight: 300;
+        }
+
+        .menu {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .menu a {
+            color: #f5e6d3;
+            text-decoration: none;
+            padding: 8px 14px;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+            font-size: 0.95rem;
+        }
+
+        .menu a:hover {
+            background: #b8863d;
+            color: #0f2c3d;
+            transform: scale(1.05);
+            box-shadow: 0 4px 15px rgba(184, 134, 61, 0.4);
+        }
+
+        .menu a.active {
+            background: #b8863d;
+            color: #0f2c3d;
+        }
+
+        /* ===== PAGE SECTION ===== */
+        .page-section {
+            padding: 60px 0;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            color: #0f2c3d;
+            margin-bottom: 10px;
+        }
+
+        .section-title span {
+            color: #b8863d;
+        }
+
+        .section-sub {
+            font-size: 1.2rem;
+            color: #5a6a7a;
+            margin-bottom: 40px;
+        }
+
+        /* ===== HERO SECTION ===== */
+        .hero {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: center;
+            margin-bottom: 40px;
+            background: linear-gradient(135deg, #f8f4f0, #f0ebe5);
+            border-radius: 30px;
+            padding: 40px;
+        }
+
+        .hero-content {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .hero-badge {
+            background: #b8863d;
+            color: white;
+            padding: 8px 20px;
+            border-radius: 30px;
+            display: inline-block;
+            width: fit-content;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
+        .hero-content h1 {
+            font-size: 3rem;
+            color: #0f2c3d;
+            line-height: 1.2;
+        }
+
+        .hero-content h1 span {
+            color: #b8863d;
+        }
+
+        .hero-content p {
+            font-size: 1.2rem;
+            color: #4a5a6a;
+            line-height: 1.8;
+        }
+
+        .hero-image {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .hero-image img {
+            width: 100%;
+            max-width: 500px;
+            height: auto;
+            border-radius: 20px;
+            border: 4px solid #b8863d;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+            object-fit: cover;
+        }
+
+        /* ===== BUTTONS ===== */
+        .btn-cta {
+            display: inline-block;
+            padding: 14px 32px;
+            background: #0f2c3d;
+            color: white;
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: 2px solid #0f2c3d;
+            margin-right: 12px;
+        }
+
+        .btn-cta:hover {
+            background: #b8863d;
+            border-color: #b8863d;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(184, 134, 61, 0.4);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: #0f2c3d;
+            border: 2px solid #0f2c3d;
+        }
+
+        .btn-outline:hover {
+            background: #0f2c3d;
+            color: white;
+            border-color: #0f2c3d;
+        }
+
+        /* ===== GRID SYSTEMS ===== */
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: center;
+        }
+
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+
+        .grid-4 {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 25px;
+        }
+
+        /* ===== CARDS ===== */
+        .card {
+            background: white;
+            padding: 25px 20px;
+            border-radius: 20px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.06);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .card h3 {
+            color: #0f2c3d;
+            margin-bottom: 8px;
+        }
+
+        /* ===== PRICE TAG ===== */
+        .price-tag {
+            display: inline-block;
+            background: #b8863d;
+            color: white;
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-weight: 700;
+            font-size: 1.1rem;
+            margin-top: 10px;
+        }
+
+        /* ===== IMAGE PLACEHOLDER ===== */
+        .img-placeholder {
+            background: #e8edf2;
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 150px;
+            font-size: 1.2rem;
+            color: #5a6a7a;
+            overflow: hidden;
+        }
+
+        .img-placeholder img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* ===== TESTIMONIALS ===== */
+        .testimonial-card {
+            background: white;
+            padding: 30px 25px;
+            border-radius: 20px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.06);
+            border-left: 4px solid #b8863d;
+            transition: transform 0.3s ease;
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .testimonial-card p {
+            font-style: italic;
+            font-size: 1.05rem;
+            margin-bottom: 12px;
+            color: #2a3a4a;
+        }
+
+        .testimonial-card .author {
+            font-weight: 700;
+            color: #b8863d;
+        }
+
+        /* ===== FOOTER ===== */
+        footer {
+            background: #0f2c3d;
+            color: #d4d4d4;
+            text-align: center;
+            padding: 30px 0;
+            margin-top: 40px;
+        }
+
+        /* ===== RESPONSIVE DESIGN ===== */
+        @media (max-width: 992px) {
+            .grid-4 {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-wrapper {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .menu {
+                justify-content: center;
+                gap: 8px;
+            }
+
+            .menu a {
+                font-size: 0.85rem;
+                padding: 6px 12px;
+            }
+
+            .hero {
+                grid-template-columns: 1fr;
+                padding: 25px;
+                text-align: center;
+            }
+
+            .hero-content {
+                order: 2;
+            }
+
+            .hero-image {
+                order: 1;
+            }
+
+            .hero-image img {
+                max-width: 100%;
+                max-height: 300px;
+            }
+
+            .hero-content h1 {
+                font-size: 2rem;
+            }
+
+            .hero-content p {
+                font-size: 1rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .grid-2 {
+                grid-template-columns: 1fr;
+                gap: 25px;
+            }
+
+            .grid-3 {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .grid-4 {
+                grid-template-columns: 1fr 1fr;
+                gap: 15px;
+            }
+
+            .page-section {
+                padding: 40px 0;
+            }
+
+            .btn-cta {
+                padding: 12px 24px;
+                font-size: 0.95rem;
+                margin-bottom: 10px;
+            }
+
+            .testimonial-card {
+                padding: 20px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .menu a {
+                font-size: 0.75rem;
+                padding: 4px 10px;
+            }
+
+            .grid-4 {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-content h1 {
+                font-size: 1.6rem;
+            }
+
+            .logo {
+                font-size: 1.2rem;
+            }
+
+            .section-title {
+                font-size: 1.6rem;
+            }
+
+            .hero {
+                padding: 20px;
+            }
+
+            .btn-cta {
+                padding: 10px 20px;
+                font-size: 0.85rem;
+                display: block;
+                width: 100%;
+                text-align: center;
+                margin-right: 0;
+                margin-bottom: 10px;
+            }
+
+            .btn-outline {
+                margin-left: 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- ========== HEADER ========== -->
+    <header>
+        <div class="container nav-wrapper">
+            <div class="logo">🏡 Trimax<span>Consultancy</span></div>
+            <nav class="menu">
+                <a href="index.html" class="active">Home</a>
+                <a href="about.html">About</a>
+                <a href="project.html">Project</a>
+                <a href="ourteam.html">Our Team</a>
+                <a href="realtyblogs.html">Realty Blogs</a>
+                <a href="contact.html">Contact</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- ========== HOME PAGE ========== -->
+    <main>
+        <section id="home" class="page-section">
+            <div class="container">
+                <!-- Hero Section -->
+                <div class="hero">
+                    <div class="hero-content">
+                        <span class="hero-badge">🌟 Luxury living in Jaipur</span>
+                        <h1>Luxury Homes, <span>Timeless Living</span></h1>
+                        <p>Exclusive luxury & premium residencies in Jaipur. Where heritage meets modern elegance.
+                            Starting at ₹65 Lacs*.</p>
+                        <div>
+                            <a href="#properties" class="btn-cta">Explore Properties</a>
+                            <a href="https://forms.gle/FGjjLSDc4zigraWw9" class="btn-cta btn-outline" target="_blank">Schedule Visit</a>
+                        </div>
+                    </div>
+                    <div class="hero-image">
+                        <img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=600&h=400&fit=crop&crop=center" 
+                             alt="Luxury building in Jaipur"
+                             style="width:100%; max-width:500px; height:auto; border-radius:20px; border:4px solid #b8863d; box-shadow:0 10px 40px rgba(0,0,0,0.15); object-fit:cover;" />
+                    </div>
+                </div>
+
+                <!-- Features / Highlights -->
+                <div class="grid-3" style="margin-top: 20px;">
+                    <div class="card" style="text-align: center;">
+                        <div style="font-size: 2.5rem; margin-bottom: 12px;">🏆</div>
+                        <h3>500+ Happy Families</h3>
+                        <p>Trusted by discerning buyers across Rajasthan.</p>
+                    </div>
+                    <div class="card" style="text-align: center;">
+                        <div style="font-size: 2.5rem; margin-bottom: 12px;">⭐</div>
+                        <h3>4.9/5 Rating</h3>
+                        <p>Based on 200+ verified reviews from our clients.</p>
+                    </div>
+                    <div class="card" style="text-align: center;">
+                        <div style="font-size: 2.5rem; margin-bottom: 12px;">📍</div>
+                        <h3>10+ Years Expertise</h3>
+                        <p>Curating the finest estates in Jaipur since 2015.</p>
+                    </div>
+                </div>
+
+                <!-- Featured Properties -->
+                <h2 class="section-title" style="margin-top: 60px;">Featured <span>Properties</span></h2>
+                <p class="section-sub">Handpicked luxury farmhouses and weekend homes for the discerning buyer.</p>
+
+                <div class="grid-3">
+                    <div class="card">
+                        <div class="img-placeholder" style="min-height: 150px; margin-bottom: 16px;">
+                            <img src="https://images.unsplash.com/photo-1580587771525-78b9dba3b914?w=600&h=300&fit=crop&crop=center" 
+                                 alt="Tirupati Farmhouse" 
+                                 style="width:100%; height:100%; object-fit:cover;" />
+                        </div>
+                        <h3>Tirupati Farmhouse</h3>
+                        <p>3 BHK · 2.5 acres · pool & garden</p>
+                        <span class="price-tag">₹ 65 Lacs*</span>
+                    </div>
+                    <div class="card">
+                        <div class="img-placeholder" style="min-height: 150px; margin-bottom: 16px;">
+                            <img src="https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=600&h=300&fit=crop&crop=center" 
+                                 alt="Amber Heritage Villa" 
+                                 style="width:100%; height:100%; object-fit:cover;" />
+                        </div>
+                        <h3>Amber Heritage Villa</h3>
+                        <p>5 BHK · 4 acres · banquet hall</p>
+                        <span class="price-tag">₹ 1.2 Cr*</span>
+                    </div>
+                    <div class="card">
+                        <div class="img-placeholder" style="min-height: 150px; margin-bottom: 16px;">
+                            <img src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=600&h=300&fit=crop&crop=center" 
+                                 alt="Pink City Retreat" 
+                                 style="width:100%; height:100%; object-fit:cover;" />
+                        </div>
+                        <h3>Pink City Retreat</h3>
+                        <p>2 BHK · 1.8 acres · modern</p>
+                        <span class="price-tag">₹ 48 Lacs*</span>
+                    </div>
+                </div>
+
+                <!-- Why Choose Us -->
+                <h2 class="section-title" style="margin-top: 60px;">Why Choose <span>Trimax Consultancy</span></h2>
+                <p class="section-sub">We go beyond just selling properties — we help you find your dream home.</p>
+
+                <div class="grid-4">
+                    <div class="card" style="text-align: center;">
+                        <div style="font-size: 2.2rem; margin-bottom: 12px;">🔍</div>
+                        <h3>Curated Selection</h3>
+                        <p>Every property is handpicked for quality and location.</p>
+                    </div>
+                    <div class="card" style="text-align: center;">
+                        <div style="font-size: 2.2rem; margin-bottom: 12px;">🤝</div>
+                        <h3>Transparent Dealings</h3>
+                        <p>Clear titles, honest communication, no hidden fees.</p>
+                    </div>
+                    <div class="card" style="text-align: center;">
+                        <div style="font-size: 2.2rem; margin-bottom: 12px;">🏗️</div>
+                        <h3>Premium Quality</h3>
+                        <p>Uncompromised construction and design standards.</p>
+                    </div>
+                    <div class="card" style="text-align: center;">
+                        <div style="font-size: 2.2rem; margin-bottom: 12px;">💎</div>
+                        <h3>Investment Value</h3>
+                        <p>High appreciation potential in prime locations.</p>
+                    </div>
+                </div>
+
+                <!-- Testimonials -->
+                <h2 class="section-title" style="margin-top: 60px;">What Our <span>Clients Say</span></h2>
+                <div class="grid-3">
+                    <div class="testimonial-card">
+                        <p>"Trimax Consultancy made our dream of owning a farmhouse a reality. The team was professional
+                            and guided us through every step."</p>
+                        <div class="author">— Mr. & Mrs. Sharma</div>
+                    </div>
+                    <div class="testimonial-card">
+                        <p>"We were impressed by the quality and location of the properties. Highly recommended for
+                            anyone looking for luxury living in Jaipur."</p>
+                        <div class="author">— Dr. Arvind Singh</div>
+                    </div>
+                    <div class="testimonial-card">
+                        <p>"The transparent process and excellent after-sales support set Trimax Consultancy apart. We
+                            love our weekend home!"</p>
+                        <div class="author">— Ms. Priya Mehta</div>
+                    </div>
+                </div>
+
+                <!-- CTA Section -->
+                <div style="margin-top: 60px; background: linear-gradient(135deg, #0f2c3d, #1a3f55); padding: 50px 40px; border-radius: 40px; text-align: center; color: white;">
+                    <h2 style="font-size: 2.4rem; margin-bottom: 16px;">Ready to Find Your <span style="color: #b8863d;">Dream Home</span>?</h2>
+                    <p style="font-size: 1.2rem; margin-bottom: 30px; opacity: 0.9;">Schedule a private tour of our premium properties today.</p>
+                    <a href="#contact" class="btn-cta" style="background: #b8863d; color: white; font-size: 1.2rem; padding: 18px 50px; border-color: #b8863d;">Get in Touch</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- ========== FOOTER ========== -->
+    <footer>
+        <div class="container">
+            <p>© 2026 Trimax Consultancy · Luxury Real Estate Jaipur · 5 pages · common CSS · hover & smooth scroll</p>
+            <p style="margin-top: 6px; font-size: 0.9rem; opacity: 0.7;">🏡 crafted for discerning buyers · all images are illustrative</p>
+        </div>
+    </footer>
+
+    <!-- ========== JAVASCRIPT ========== -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Active menu highlight
+            const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+            const menuLinks = document.querySelectorAll('.menu a');
+            menuLinks.forEach(link => {
+                const linkHref = link.getAttribute('href');
+                if (linkHref === currentPage) {
+                    link.classList.add('active');
+                } else {
+                    link.classList.remove('active');
+                }
+            });
+
+            // Smooth scroll for internal links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    const targetId = this.getAttribute('href');
+                    if (targetId === '#') return;
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        e.preventDefault();
+                        targetElement.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                });
+            });
+
+            console.log('Trimax Consultancy · Home page loaded');
+        });
+    </script>
+
+</body>
+
+</html><!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Trimax Consultancy · Luxury Real Estate Jaipur</title>
     <!-- Common CSS (embedded for single-page demo) -->
     <link rel="stylesheet" href="style.css">
 </head>
