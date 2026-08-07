@@ -5,8 +5,413 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Realty Education · Trimax Consultancy</title>
-    <!-- Common CSS (embedded for single-page demo) -->
-    <link rel="stylesheet" href="style.css">
+    <style>
+        /* ===== RESET & BASE ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #fafaf8;
+            color: #1a2a3a;
+            line-height: 1.6;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        /* ===== HEADER ===== */
+        header {
+            background: #0f2c3d;
+            color: white;
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .nav-wrapper {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #f5e6d3;
+        }
+
+        .logo span {
+            color: #b8863d;
+            font-weight: 300;
+        }
+
+        .menu {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .menu a {
+            color: #f5e6d3;
+            text-decoration: none;
+            padding: 8px 14px;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+            font-size: 0.95rem;
+        }
+
+        .menu a:hover {
+            background: #b8863d;
+            color: #0f2c3d;
+            transform: scale(1.05);
+            box-shadow: 0 4px 15px rgba(184, 134, 61, 0.4);
+        }
+
+        .menu a.active {
+            background: #b8863d;
+            color: #0f2c3d;
+        }
+
+        /* ===== PAGE SECTION ===== */
+        .page-section {
+            padding: 60px 0;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            color: #0f2c3d;
+            margin-bottom: 10px;
+        }
+
+        .section-title span {
+            color: #b8863d;
+        }
+
+        .section-sub {
+            font-size: 1.2rem;
+            color: #5a6a7a;
+            margin-bottom: 40px;
+        }
+
+        /* ===== GRID SYSTEMS ===== */
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+        }
+
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+
+        .grid-4 {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 25px;
+        }
+
+        /* ===== CARDS ===== */
+        .card {
+            background: white;
+            padding: 25px 20px;
+            border-radius: 20px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.06);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 1px solid rgba(184, 134, 61, 0.08);
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+        }
+
+        .card .icon {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+
+        .card h3 {
+            color: #0f2c3d;
+            margin-bottom: 8px;
+        }
+
+        .card h4 {
+            color: #0f2c3d;
+            margin-bottom: 6px;
+        }
+
+        .card p {
+            color: #4d6377;
+        }
+
+        /* ===== GUIDE CARDS ===== */
+        .guide-card {
+            background: white;
+            padding: 25px 20px;
+            border-radius: 20px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.06);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border-left: 4px solid #b8863d;
+        }
+
+        .guide-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .guide-card h4 {
+            color: #0f2c3d;
+            margin-bottom: 6px;
+        }
+
+        .guide-card p {
+            color: #4d6377;
+        }
+
+        /* ===== IMAGE PLACEHOLDER ===== */
+        .img-placeholder {
+            background: linear-gradient(135deg, #e8edf2, #d5dce3);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 220px;
+            font-size: 1.2rem;
+            color: #5a6a7a;
+            overflow: hidden;
+        }
+
+        .img-placeholder.large {
+            min-height: 300px;
+        }
+
+        .img-placeholder img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* ===== BUTTONS ===== */
+        .btn-cta {
+            display: inline-block;
+            padding: 12px 28px;
+            background: #0f2c3d;
+            color: white;
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: 2px solid #0f2c3d;
+            cursor: pointer;
+            font-size: 0.95rem;
+        }
+
+        .btn-cta:hover {
+            background: #b8863d;
+            border-color: #b8863d;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(184, 134, 61, 0.4);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: #0f2c3d;
+            border: 2px solid #0f2c3d;
+        }
+
+        .btn-outline:hover {
+            background: #0f2c3d;
+            color: white;
+            border-color: #0f2c3d;
+        }
+
+        /* ===== FAQ SECTION ===== */
+        .faq-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .faq-item {
+            background: white;
+            padding: 24px 20px;
+            border-radius: 20px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.06);
+            transition: transform 0.3s ease;
+            border: 1px solid rgba(184, 134, 61, 0.08);
+        }
+
+        .faq-item:hover {
+            transform: translateY(-3px);
+        }
+
+        .faq-item h4 {
+            color: #b8863d;
+            margin-bottom: 6px;
+        }
+
+        .faq-item p {
+            color: #4d6377;
+        }
+
+        /* ===== RESOURCES SECTION ===== */
+        .resource-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+
+        .resource-item h4 {
+            color: #b8863d;
+            margin-bottom: 6px;
+        }
+
+        .resource-item p {
+            color: #4d6377;
+        }
+
+        /* ===== FOOTER ===== */
+        footer {
+            background: #0f2c3d;
+            color: #d4d4d4;
+            text-align: center;
+            padding: 30px 0;
+            margin-top: 40px;
+        }
+
+        /* ===== RESPONSIVE DESIGN ===== */
+        @media (max-width: 992px) {
+            .grid-4 {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .faq-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-wrapper {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .menu {
+                justify-content: center;
+                gap: 8px;
+            }
+
+            .menu a {
+                font-size: 0.85rem;
+                padding: 6px 12px;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .section-sub {
+                font-size: 1rem;
+            }
+
+            .page-section {
+                padding: 40px 0;
+            }
+
+            .grid-2 {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .grid-3 {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .grid-4 {
+                grid-template-columns: 1fr 1fr;
+                gap: 15px;
+            }
+
+            .resource-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .faq-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .logo {
+                font-size: 1.3rem;
+            }
+
+            .img-placeholder.large {
+                min-height: 200px;
+            }
+
+            .btn-cta {
+                display: block;
+                width: 100%;
+                text-align: center;
+                margin-bottom: 8px;
+            }
+
+            .guide-card {
+                padding: 20px 16px;
+            }
+
+            .card {
+                padding: 20px 16px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .menu a {
+                font-size: 0.75rem;
+                padding: 4px 10px;
+            }
+
+            .section-title {
+                font-size: 1.6rem;
+            }
+
+            .logo {
+                font-size: 1.1rem;
+            }
+
+            .grid-4 {
+                grid-template-columns: 1fr;
+            }
+
+            .img-placeholder {
+                min-height: 150px;
+                font-size: 1rem;
+            }
+
+            .img-placeholder.large {
+                min-height: 150px;
+            }
+
+            .btn-cta {
+                padding: 10px 20px;
+                font-size: 0.85rem;
+            }
+        }
+    </style>
 </head>
 
 <body>
@@ -17,9 +422,9 @@
             <div class="logo">🏡 Trimax<span>Consultancy</span></div>
             <nav class="menu">
                 <a href="index.html">Home</a>
-                <a href="about.html" >About</a>
+                <a href="about.html">About</a>
                 <a href="project.html">Project</a>
-                <a href="ourteam.html">Our team</a>
+                <a href="ourteam.html">Our Team</a>
                 <a href="realtyblogs.html" class="active">Realty Blogs</a>
                 <a href="contact.html">Contact</a>
             </nav>
@@ -36,7 +441,9 @@
 
                 <!-- Hero Image -->
                 <div class="img-placeholder large" style="margin-bottom: 50px;">
-                    <i>📚 Your Guide to Smart Real Estate Investment</i>
+                    <img src="https://images.unsplash.com/photo-1560520653-9e0e4c89eb11?w=1200&h=400&fit=crop&crop=center" 
+                         alt="Real Estate Education Guide" 
+                         style="width:100%; height:100%; object-fit:cover; border-radius:20px;" />
                 </div>
 
                 <!-- Buying Guide -->
@@ -77,8 +484,7 @@
                 </div>
 
                 <!-- Investment Insights -->
-                <h2 class="section-title" style="font-size: 2rem; margin-top: 60px;">Investment <span>Insights</span>
-                </h2>
+                <h2 class="section-title" style="font-size: 2rem; margin-top: 60px;">Investment <span>Insights</span></h2>
                 <p class="section-sub">Why investing in Jaipur's luxury farmhouses makes financial sense.</p>
 
                 <div class="grid-2">
@@ -109,80 +515,62 @@
                 </div>
 
                 <!-- FAQ Section -->
-                <h2 class="section-title" style="font-size: 2rem; margin-top: 60px;">Frequently Asked
-                    <span>Questions</span></h2>
+                <h2 class="section-title" style="font-size: 2rem; margin-top: 60px;">Frequently Asked <span>Questions</span></h2>
 
-                <div class="grid-2" style="gap: 20px;">
-                    <div class="card" style="padding: 24px 20px;">
-                        <h4 style="color: #b8863d;">❓ What is the average price of a farmhouse in Jaipur?</h4>
-                        <p style="color: #4d6377;">Prices range from ₹48 Lacs to ₹1.8 Cr depending on location, size,
-                            and amenities. Our projects start at ₹65 Lacs*.</p>
+                <div class="faq-grid">
+                    <div class="faq-item">
+                        <h4>❓ What is the average price of a farmhouse in Jaipur?</h4>
+                        <p>Prices range from ₹48 Lacs to ₹1.8 Cr depending on location, size, and amenities. Our projects start at ₹65 Lacs*.</p>
                     </div>
-                    <div class="card" style="padding: 24px 20px;">
-                        <h4 style="color: #b8863d;">❓ Are the properties ready to move in?</h4>
-                        <p style="color: #4d6377;">Most of our projects are ready for immediate possession. Some
-                            upcoming projects are under development.</p>
+                    <div class="faq-item">
+                        <h4>❓ Are the properties ready to move in?</h4>
+                        <p>Most of our projects are ready for immediate possession. Some upcoming projects are under development.</p>
                     </div>
-                    <div class="card" style="padding: 24px 20px;">
-                        <h4 style="color: #b8863d;">❓ Do you offer home loan assistance?</h4>
-                        <p style="color: #4d6377;">Yes, we have partnerships with leading banks to help you secure home
-                            loans with competitive interest rates.</p>
+                    <div class="faq-item">
+                        <h4>❓ Do you offer home loan assistance?</h4>
+                        <p>Yes, we have partnerships with leading banks to help you secure home loans with competitive interest rates.</p>
                     </div>
-                    <div class="card" style="padding: 24px 20px;">
-                        <h4 style="color: #b8863d;">❓ Is the property title clear?</h4>
-                        <p style="color: #4d6377;">All our properties have clear titles and are legally verified. We
-                            ensure transparent and hassle-free transactions.</p>
+                    <div class="faq-item">
+                        <h4>❓ Is the property title clear?</h4>
+                        <p>All our properties have clear titles and are legally verified. We ensure transparent and hassle-free transactions.</p>
                     </div>
-                    <div class="card" style="padding: 24px 20px;">
-                        <h4 style="color: #b8863d;">❓ Can I customize the interiors?</h4>
-                        <p style="color: #4d6377;">Yes, we offer customization options for interiors based on your
-                            preferences and requirements.</p>
+                    <div class="faq-item">
+                        <h4>❓ Can I customize the interiors?</h4>
+                        <p>Yes, we offer customization options for interiors based on your preferences and requirements.</p>
                     </div>
-                    <div class="card" style="padding: 24px 20px;">
-                        <h4 style="color: #b8863d;">❓ What are the maintenance charges?</h4>
-                        <p style="color: #4d6377;">Maintenance charges vary by project. We provide a detailed breakdown
-                            during the purchase process.</p>
+                    <div class="faq-item">
+                        <h4>❓ What are the maintenance charges?</h4>
+                        <p>Maintenance charges vary by project. We provide a detailed breakdown during the purchase process.</p>
                     </div>
                 </div>
 
                 <!-- Resources Section -->
                 <div style="margin-top: 60px; background: #f2f6fb; padding: 40px 30px; border-radius: 40px;">
                     <h2 style="color: #0f2c3d; font-size: 1.8rem; margin-bottom: 20px;">📚 Resources for Buyers</h2>
-                    <div class="grid-3" style="margin: 0;">
-                        <div>
-                            <h4 style="color: #b8863d;">📄 Property Checklist</h4>
-                            <p style="color: #4d6377;">Download our comprehensive checklist for evaluating luxury
-                                properties before purchase.</p>
-                            <a href="#" class="btn-cta"
-                                style="margin-top: 12px; padding: 10px 24px; font-size: 0.9rem;">Download PDF</a>
+                    <div class="resource-grid">
+                        <div class="resource-item">
+                            <h4>📄 Property Checklist</h4>
+                            <p>Download our comprehensive checklist for evaluating luxury properties before purchase.</p>
+                            <a href="#" class="btn-cta" style="margin-top: 12px; padding: 10px 24px; font-size: 0.9rem; display: inline-block;">Download PDF</a>
                         </div>
-                        <div>
-                            <h4 style="color: #b8863d;">📊 Investment Calculator</h4>
-                            <p style="color: #4d6377;">Estimate returns on investment and calculate potential
-                                appreciation rates.</p>
-                            <a href="#" class="btn-cta"
-                                style="margin-top: 12px; padding: 10px 24px; font-size: 0.9rem;">Use Tool</a>
+                        <div class="resource-item">
+                            <h4>📊 Investment Calculator</h4>
+                            <p>Estimate returns on investment and calculate potential appreciation rates.</p>
+                            <a href="#" class="btn-cta" style="margin-top: 12px; padding: 10px 24px; font-size: 0.9rem; display: inline-block;">Use Tool</a>
                         </div>
-                        <div>
-                            <h4 style="color: #b8863d;">📖 Legal Guide</h4>
-                            <p style="color: #4d6377;">Understand property laws, registration process, and legal
-                                documentation requirements.</p>
-                            <a href="#" class="btn-cta"
-                                style="margin-top: 12px; padding: 10px 24px; font-size: 0.9rem;">Read Guide</a>
+                        <div class="resource-item">
+                            <h4>📖 Legal Guide</h4>
+                            <p>Understand property laws, registration process, and legal documentation requirements.</p>
+                            <a href="#" class="btn-cta" style="margin-top: 12px; padding: 10px 24px; font-size: 0.9rem; display: inline-block;">Read Guide</a>
                         </div>
                     </div>
                 </div>
 
                 <!-- CTA Section -->
-                <div
-                    style="margin-top: 50px; background: linear-gradient(135deg, #0f2c3d, #1a3f55); padding: 40px 30px; border-radius: 40px; text-align: center; color: white;">
-                    <h2 style="font-size: 2rem; margin-bottom: 16px;">Have Questions? We're <span
-                            style="color: #b8863d;">Here to Help</span></h2>
-                    <p style="font-size: 1.1rem; margin-bottom: 24px; opacity: 0.9;">Our expert team can guide you
-                        through every step of your property buying journey.</p>
-                    <a href="#contact" class="btn-cta"
-                        style="display: inline-block; background: #b8863d; color: white; padding: 16px 44px; border-radius: 60px; font-weight: 600; text-decoration: none; transition: 0.25s ease; font-size: 1.1rem;">Contact
-                        Our Experts</a>
+                <div style="margin-top: 50px; background: linear-gradient(135deg, #0f2c3d, #1a3f55); padding: 40px 30px; border-radius: 40px; text-align: center; color: white;">
+                    <h2 style="font-size: 2rem; margin-bottom: 16px;">Have Questions? We're <span style="color: #b8863d;">Here to Help</span></h2>
+                    <p style="font-size: 1.1rem; margin-bottom: 24px; opacity: 0.9;">Our expert team can guide you through every step of your property buying journey.</p>
+                    <a href="contact.html" class="btn-cta" style="background: #b8863d; color: white; border-color: #b8863d; padding: 16px 44px; font-size: 1.1rem; display: inline-block;">Contact Our Experts</a>
                 </div>
             </div>
         </section>
@@ -192,16 +580,15 @@
     <footer>
         <div class="container">
             <p>© 2026 Trimax Consultancy · Luxury Real Estate Jaipur · 5 pages · common CSS · hover & smooth scroll</p>
-            <p style="margin-top: 6px; font-size: 0.9rem; opacity: 0.7;">🏡 crafted for discerning buyers · all images
-                are illustrative</p>
+            <p style="margin-top: 6px; font-size: 0.9rem; opacity: 0.7;">🏡 crafted for discerning buyers · all images are illustrative</p>
         </div>
     </footer>
 
-    <!-- ========== COMMON JAVASCRIPT ========== -->
+    <!-- ========== JAVASCRIPT ========== -->
     <script>
-        document.addEventListener('DOMContentLoaded', function () {
+        document.addEventListener('DOMContentLoaded', function() {
             // Active menu highlight
-            const currentPage = window.location.pathname.split('/').pop() || 'education.html';
+            const currentPage = window.location.pathname.split('/').pop() || 'realtyblogs.html';
             const menuLinks = document.querySelectorAll('.menu a');
             menuLinks.forEach(link => {
                 const linkHref = link.getAttribute('href');
@@ -214,7 +601,7 @@
 
             // Smooth scroll for internal links
             document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-                anchor.addEventListener('click', function (e) {
+                anchor.addEventListener('click', function(e) {
                     const targetId = this.getAttribute('href');
                     if (targetId === '#') return;
                     const targetElement = document.querySelector(targetId);
