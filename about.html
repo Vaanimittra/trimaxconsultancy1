@@ -4,9 +4,276 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>About Us · trimaxconsultancy</title>
-    <!-- Common CSS (embedded for single-page demo) -->
-    <link rel="stylesheet" href="style.css">
+    <title>About Us · Trimax Consultancy</title>
+    <style>
+        /* ===== RESET & BASE ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #fafaf8;
+            color: #1a2a3a;
+            line-height: 1.6;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        /* ===== HEADER ===== */
+        header {
+            background: #0f2c3d;
+            color: white;
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .nav-wrapper {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #f5e6d3;
+        }
+
+        .logo span {
+            color: #b8863d;
+            font-weight: 300;
+        }
+
+        .menu {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .menu a {
+            color: #f5e6d3;
+            text-decoration: none;
+            padding: 8px 14px;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+            font-size: 0.95rem;
+        }
+
+        .menu a:hover {
+            background: #b8863d;
+            color: #0f2c3d;
+            transform: scale(1.05);
+            box-shadow: 0 4px 15px rgba(184, 134, 61, 0.4);
+        }
+
+        .menu a.active {
+            background: #b8863d;
+            color: #0f2c3d;
+        }
+
+        /* ===== PAGE SECTION ===== */
+        .page-section {
+            padding: 60px 0;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            color: #0f2c3d;
+            margin-bottom: 10px;
+        }
+
+        .section-title span {
+            color: #b8863d;
+        }
+
+        .section-sub {
+            font-size: 1.2rem;
+            color: #5a6a7a;
+            margin-bottom: 40px;
+        }
+
+        /* ===== GRID SYSTEMS ===== */
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: center;
+        }
+
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+
+        .grid-4 {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 25px;
+        }
+
+        /* ===== CARDS ===== */
+        .card {
+            background: white;
+            padding: 25px 20px;
+            border-radius: 20px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.06);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .card h3 {
+            color: #0f2c3d;
+            margin-bottom: 10px;
+        }
+
+        /* ===== IMAGE PLACEHOLDER ===== */
+        .img-placeholder {
+            background: #e8edf2;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 220px;
+            font-size: 1.2rem;
+            color: #5a6a7a;
+            overflow: hidden;
+        }
+
+        .img-placeholder.large {
+            min-height: 300px;
+        }
+
+        .img-placeholder img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .headshot {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid #b8863d;
+            margin-bottom: 10px;
+        }
+
+        /* ===== STAT BADGES ===== */
+        .stat-badge {
+            background: #0f2c3d;
+            color: white;
+            padding: 8px 18px;
+            border-radius: 30px;
+            font-size: 0.9rem;
+            display: inline-block;
+        }
+
+        /* ===== FOOTER ===== */
+        footer {
+            background: #0f2c3d;
+            color: #d4d4d4;
+            text-align: center;
+            padding: 30px 0;
+            margin-top: 40px;
+        }
+
+        /* ===== RESPONSIVE DESIGN ===== */
+        @media (max-width: 992px) {
+            .grid-4 {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-wrapper {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .menu {
+                justify-content: center;
+                gap: 8px;
+            }
+
+            .menu a {
+                font-size: 0.85rem;
+                padding: 6px 12px;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .grid-2 {
+                grid-template-columns: 1fr;
+                gap: 25px;
+            }
+
+            .grid-3 {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .grid-4 {
+                grid-template-columns: 1fr 1fr;
+                gap: 15px;
+            }
+
+            .img-placeholder.large {
+                min-height: 200px;
+            }
+
+            .page-section {
+                padding: 40px 0;
+            }
+
+            .headshot {
+                width: 100px;
+                height: 100px;
+            }
+
+            .stat-badge {
+                font-size: 0.8rem;
+                padding: 6px 14px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .menu a {
+                font-size: 0.75rem;
+                padding: 4px 10px;
+            }
+
+            .grid-4 {
+                grid-template-columns: 1fr;
+            }
+
+            .section-title {
+                font-size: 1.6rem;
+            }
+
+            .logo {
+                font-size: 1.2rem;
+            }
+        }
+    </style>
 </head>
 
 <body>
@@ -19,7 +286,7 @@
                 <a href="index.html">Home</a>
                 <a href="about.html" class="active">About</a>
                 <a href="project.html">Project</a>
-                <a href="ourteam.html">Our team</a>
+                <a href="ourteam.html">Our Team</a>
                 <a href="realtyblogs.html">Realty Blogs</a>
                 <a href="contact.html">Contact</a>
             </nav>
@@ -33,6 +300,7 @@
                 <h1 class="section-title">About <span>Trimax Consultancy</span></h1>
                 <p class="section-sub">Jaipur's most trusted name in luxury farmhouses and weekend homes.</p>
 
+                <!-- ===== ABOUT CONTENT ===== -->
                 <div class="grid-2">
                     <div>
                         <p style="font-size: 1.2rem; margin-bottom: 20px;">
@@ -53,13 +321,15 @@
                         </div>
                     </div>
                     <div>
-                        <div class="img-placeholder large" style="min-height: 220px;">
-                            <i>🏛️ legacy of trust</i>
+                        <div class="img-placeholder large">
+                            <img src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=500&fit=crop&crop=center"
+                                alt="Luxury property in Jaipur"
+                                style="width:100%; height:100%; object-fit:cover; border-radius:20px;" />
                         </div>
                     </div>
                 </div>
 
-                <!-- Our Values (multi-section) -->
+                <!-- ===== OUR VALUES ===== -->
                 <div class="grid-3" style="margin-top: 50px;">
                     <div class="card">
                         <h3>🧭 Vision</h3>
@@ -76,60 +346,68 @@
                     </div>
                 </div>
 
-                <!-- Additional Brand Story Section -->
+                <!-- ===== OUR JOURNEY ===== -->
                 <div style="margin-top: 60px; background: #f2f6fb; padding: 40px 30px; border-radius: 40px;">
                     <h2 style="color: #0f2c3d; font-size: 1.8rem; margin-bottom: 20px;">Our Journey</h2>
                     <div style="display: flex; flex-wrap: wrap; gap: 30px;">
-                        <div style="flex: 1; min-width: 200px;">
+                        <div style="flex: 1; min-width: 150px;">
                             <h4 style="color: #b8863d;">2015</h4>
                             <p>Founded with a vision to bring luxury farmhouses to Jaipur's outskirts.</p>
                         </div>
-                        <div style="flex: 1; min-width: 200px;">
+                        <div style="flex: 1; min-width: 150px;">
                             <h4 style="color: #b8863d;">2018</h4>
                             <p>Expanded to 50+ properties, becoming a trusted name in the region.</p>
                         </div>
-                        <div style="flex: 1; min-width: 200px;">
+                        <div style="flex: 1; min-width: 150px;">
                             <h4 style="color: #b8863d;">2023</h4>
                             <p>Launched the "Tirupati Weekend Home" project — our flagship offering.</p>
                         </div>
-                        <div style="flex: 1; min-width: 200px;">
+                        <div style="flex: 1; min-width: 150px;">
                             <h4 style="color: #b8863d;">Today</h4>
                             <p>Continuing to curate the finest estates for discerning buyers.</p>
                         </div>
                     </div>
                 </div>
 
-                <!-- Team / Leadership (optional) -->
+                <!-- ===== LEADERSHIP TEAM ===== -->
                 <div style="margin-top: 50px;">
                     <h2 style="color: #0f2c3d; font-size: 1.8rem; margin-bottom: 20px;">Meet the Leadership Team</h2>
                     <div class="grid-4">
                         <div class="card" style="text-align: center;">
-                              <div class="img-placeholder">
-                                <img src="images/arvind.jpeg" alt="arvind" class="headshot">
+                            <div class="img-placeholder" style="display: flex; justify-content: center; background: transparent; min-height: auto;">
+                                <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&h=200&fit=crop&crop=center"
+                                    alt="Arvind Saran"
+                                    class="headshot">
                             </div>
                             <h3>Mr. Arvind Saran</h3>
-                            <p>Founder & CEO · 15+ years in real estate</p>
+                            <p style="font-size:0.9rem; color:#5a6a7a;">Founder & CEO · 15+ years in real estate</p>
                         </div>
                         <div class="card" style="text-align: center;">
-                              <div class="img-placeholder">
-                                <img src="images/shambhu.jpeg" alt="shambhu" class="headshot">
+                            <div class="img-placeholder" style="display: flex; justify-content: center; background: transparent; min-height: auto;">
+                                <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=200&h=200&fit=crop&crop=center"
+                                    alt="Shambhu Singh Chouhan"
+                                    class="headshot">
                             </div>
                             <h3>Mr. Shambhu Singh Chouhan</h3>
-                            <p>Director of Marketing & Sales · Client relations expert</p>
+                            <p style="font-size:0.9rem; color:#5a6a7a;">Director of Marketing & Sales · Client relations expert</p>
                         </div>
                         <div class="card" style="text-align: center;">
-                            <div class="img-placeholder">
-                                <img src="images/prem.jpeg" alt="prem" class="headshot">
+                            <div class="img-placeholder" style="display: flex; justify-content: center; background: transparent; min-height: auto;">
+                                <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=200&h=200&fit=crop&crop=center"
+                                    alt="Prem Kumar Mittra"
+                                    class="headshot">
                             </div>
                             <h3>Mr. Prem Kumar Mittra</h3>
-                            <p>Director of Marketing & Sales · Luxury portfolio specialist</p>
+                            <p style="font-size:0.9rem; color:#5a6a7a;">Director of Marketing & Sales · Luxury portfolio specialist</p>
                         </div>
                         <div class="card" style="text-align: center;">
-                              <div class="img-placeholder">
-                                <img src="images/anubha.jpeg" alt="anubha" class="headshot">
+                            <div class="img-placeholder" style="display: flex; justify-content: center; background: transparent; min-height: auto;">
+                                <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=200&h=200&fit=crop&crop=center"
+                                    alt="Anubha Jain"
+                                    class="headshot">
                             </div>
                             <h3>Mrs. Anubha Jain</h3>
-                            <p>Director of Backend Operations · HR & Administration</p>
+                            <p style="font-size:0.9rem; color:#5a6a7a;">Director of Backend Operations · HR & Administration</p>
                         </div>
                     </div>
                 </div>
@@ -146,9 +424,9 @@
         </div>
     </footer>
 
-    <!-- ========== COMMON JAVASCRIPT ========== -->
+    <!-- ========== JAVASCRIPT ========== -->
     <script>
-        document.addEventListener('DOMContentLoaded', function () {
+        document.addEventListener('DOMContentLoaded', function() {
             // Active menu highlight
             const currentPage = window.location.pathname.split('/').pop() || 'about.html';
             const menuLinks = document.querySelectorAll('.menu a');
@@ -163,7 +441,7 @@
 
             // Smooth scroll for internal links
             document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-                anchor.addEventListener('click', function (e) {
+                anchor.addEventListener('click', function(e) {
                     const targetId = this.getAttribute('href');
                     if (targetId === '#') return;
                     const targetElement = document.querySelector(targetId);
